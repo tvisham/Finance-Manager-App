@@ -1,0 +1,459 @@
+from tkinter import *  
+
+# colors --------------------
+bluecolor = '#75C0E0'
+pinkcolor = '#F2AD92'
+totalmoney  = 0 
+number = 0
+# functions -----------------------
+
+def tipsclicked(): 
+    tipswindow = Tk()
+    tipswindow.title("Tips")
+    tipswindow.minsize(width=376,height=312)
+    tipswindow.configure(bg='white')
+
+    tipsframe = Frame(tipswindow,bg=bluecolor,width=376,height=66)
+    tipsframe.place(x=0,y=0)
+    tipslabel = Label(tipsframe,text="Tips", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",25,'bold'))
+    tipslabel.place(x=21,y=6)
+
+    tipstextframe = Frame(tipswindow,bg=bluecolor,width=376,height=224)
+    tipstextframe.place(x=0,y=88)
+    frameinsidetipstextframe = Frame(tipstextframe,bg=bluecolor,width=346,height=202)
+    frameinsidetipstextframe.place(x=15,y=19)
+    tipstext = Text(frameinsidetipstextframe, height=195, width=346, font=("Microsoft YaHei Light",15,'bold'), )   
+    tipstext.place(x=0,y=0)
+    tipstext.insert(END,"1. Create a budget \n 2. Save first, spend later \n 3. Set financial goals \n 4. Start investing early \n 5. Avoid debt \n 6. Save early \n 7.Check your interest rate")
+
+    scrollbar = Scrollbar(tipswindow,orient='vertical',command=tipstext.yview)
+    tipstext['yscrollcommand'] = scrollbar.set 
+    tipswindow.mainloop()
+
+def rentclicked(): 
+    global newrent
+    global rentpercentage
+    rentpercentage = float(newrent)-float(rent)/float(rent)
+    rentwindow = Tk()
+    rentwindow.title("rent")
+    rentwindow.minsize(width=355,height=100)
+    rentwindow.configure(bg='white')
+
+    rentframe = Frame(rentwindow,bg=bluecolor, width=355, height=59)
+    rentframe.place(x=0,y=0)
+    renttext2= Label(rentframe,text="Rent", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",25,'bold'))
+    renttext2.place(x=21,y=6)
+    
+    totalbillframe1 = Frame(rentwindow,bg=bluecolor, width=355, height=300)
+    totalbillframe1.place(x=0,y=70)
+    totalbilltext = Label(totalbillframe1, text="Total Bill:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    totalbilltext.place(x=12,y=6)
+    othertotalbilltext = Label(totalbillframe1, text=rent,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    othertotalbilltext.place(x=105,y=6)
+    havelefttext = Label(totalbillframe1, text="What You Have Left:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext.place(x=12,y=30)
+    havelefttext2 = Label(totalbillframe1, text=newrent,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext2.place(x=220,y=30)
+    percentagepaidtext = Label(totalbillframe1, text="Percentage Paid: ",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext.place(x=12,y=55)
+    percentagepaidtext2 = Label(totalbillframe1, text=rentpercentage,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext2.place(x=185,y=55)
+
+    rentwindow.mainloop()
+
+def energyclicked(): 
+    global newenergy
+    global energypercentage
+    energypercentage = float(newenergycost)-float(energycost)/float(energycost)
+    energywindow = Tk()
+    energywindow.title("energy")
+    energywindow.minsize(width=355,height=100)
+    energywindow.configure(bg='white')
+
+    energyframe = Frame(energywindow,bg=bluecolor, width=355, height=59)
+    energyframe.place(x=0,y=0)
+    energytext2= Label(energyframe,text="Energy", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",25,'bold'))
+    energytext2.place(x=21,y=6)
+    
+    totalbillframe12 = Frame(energywindow,bg=bluecolor, width=355, height=300)
+    totalbillframe12.place(x=0,y=70)
+    totalbilltext2 = Label(totalbillframe12, text="Total Bill:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    totalbilltext2.place(x=12,y=6)
+    othertotalbilltext2 = Label(totalbillframe12, text=energycost,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    othertotalbilltext2.place(x=105,y=6)
+    havelefttext3 = Label(totalbillframe12, text="What You Have Left:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext3.place(x=12,y=30)
+    havelefttext4= Label(totalbillframe12, text=newenergycost,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext4.place(x=220,y=30)
+    percentagepaidtext2 = Label(totalbillframe12, text="Percentage Paid: ",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext2.place(x=12,y=55)
+    percentagepaidtext2 = Label(totalbillframe12, text=energypercentage,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext2.place(x=185,y=55)
+
+    energywindow.mainloop()
+
+def waterclicked(): 
+    global newwatercost
+    global waterpercentage
+    waterpercentage = float(newwatercost)-float(watercost)/float(watercost)
+    waterwindow = Tk()
+    waterwindow.title("water")
+    waterwindow.minsize(width=355,height=100)
+    waterwindow.configure(bg='white')
+
+    waterframe = Frame(waterwindow,bg=bluecolor, width=355, height=59)
+    waterframe.place(x=0,y=0)
+    watertext2= Label(waterframe,text="Water", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",25,'bold'))
+    watertext2.place(x=21,y=6)
+    
+    totalbillframe2 = Frame(waterwindow,bg=bluecolor, width=355, height=300)
+    totalbillframe2.place(x=0,y=70)
+    totalbilltext3 = Label(totalbillframe2, text="Total Bill:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    totalbilltext3.place(x=12,y=6)
+    othertotalbilltext5 = Label(totalbillframe2, text=watercost,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    othertotalbilltext5.place(x=105,y=6)
+    havelefttext6 = Label(totalbillframe2, text="What You Have Left:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext6.place(x=12,y=30)
+    havelefttext6 = Label(totalbillframe2, text=newwatercost,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext6.place(x=220,y=30)
+    percentagepaidtext5 = Label(totalbillframe2, text="Percentage Paid: ",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext5.place(x=12,y=55)
+    percentagepaidtext5 = Label(totalbillframe2, text=waterpercentage,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext5.place(x=185,y=55)
+
+    waterwindow.mainloop()
+
+def foodclicked(): 
+    global newfood
+    global foodpercentage
+    foodpercentage = float(newfood)-float(food)/float(food)
+    foodwindow = Tk()
+    foodwindow.title("Food")
+    foodwindow.minsize(width=355,height=100)
+    foodwindow.configure(bg='white')
+
+    foodframe = Frame(foodwindow,bg=bluecolor, width=355, height=59)
+    foodframe.place(x=0,y=0)
+    foodtext2= Label(foodframe,text="Food", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",25,'bold'))
+    foodtext2.place(x=21,y=6)
+    
+    totalbillframe8 = Frame(foodwindow,bg=bluecolor, width=355, height=300)
+    totalbillframe8.place(x=0,y=70)
+    totalbilltext8 = Label(totalbillframe8, text="Total Bill:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    totalbilltext8.place(x=12,y=6)
+    othertotalbilltext8 = Label(totalbillframe8, text=food,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    othertotalbilltext8.place(x=105,y=6)
+    havelefttext8 = Label(totalbillframe8, text="What You Have Left:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext8.place(x=12,y=30)
+    havelefttext8 = Label(totalbillframe8, text=newfood,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    havelefttext8.place(x=220,y=30)
+    percentagepaidtext8 = Label(totalbillframe8, text="Percentage Paid: ",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext8.place(x=12,y=55)
+    percentagepaidtext8 = Label(totalbillframe8, text=foodpercentage,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    percentagepaidtext8.place(x=185,y=55)
+
+    foodwindow.mainloop()
+
+
+def findnumber(): 
+    global number
+    number = totalmoneyint - float(rent) - (float(energyuse)*float(energycost)) - (float(wateruse)*float(watercost)) - float(food) 
+
+def seespecifics(): 
+    findnumber()
+    seespecificwindow = Tk()
+    seespecificwindow.title("See Specifics")
+    seespecificwindow.minsize(width=464,height=276)
+    seespecificwindow.configure(bg='white' )
+
+    seespecificframe2 = Frame(seespecificwindow,height=93,width=464,bg=bluecolor)
+    seespecificframe2.place(x=0,y=0)
+    seespecifictext = Label(seespecificframe2,text="See Specifics", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",30,'bold'))
+    seespecifictext.place(x=21,y=12)
+
+    secondframe = Frame(seespecificwindow,height=166,width=464, bg=bluecolor)
+    secondframe.place(x=0,y=111)
+    rentbutton = Button(secondframe,text="Rent",bg=pinkcolor,fg='white',font=("Microsoft YaHei Light",15,'bold'),width=7, command=rentclicked)
+    rentbutton.place(x=19,y=12)
+    energybutton = Button(secondframe,text="Energy",bg=pinkcolor,fg='white',font=("Microsoft YaHei Light",15,'bold'),width=7,command=energyclicked)
+    energybutton.place(x=129,y=12)
+    waterbutton = Button(secondframe,text="Water",bg=pinkcolor,fg='white',font=("Microsoft YaHei Light",15,'bold'),width=7,command=waterclicked)
+    waterbutton.place(x=240,y=12)
+    foodbutton = Button(secondframe,text="Food",bg=pinkcolor,fg='white',font=("Microsoft YaHei Light",15,'bold'),width=7,command=foodclicked)
+    foodbutton.place(x=350,y=12)
+
+    otherlabel = Label(secondframe, text="If you pay for all your needs this month,",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    otherlabel.place(x=12,y=70)
+    otherlabel2 = Label(secondframe, text="you will have",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    otherlabel2.place(x=12,y=100)
+
+    otherlabel3 = Label(secondframe, text=number,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",15,'bold'))
+    otherlabel3.place(x=150,y=100) 
+
+    seespecificwindow.mainloop()
+
+def updatetotalmoney():
+    totalmoney = (totalmoneyint)
+    moneynumber2.configure(text=totalmoney)
+    moneynumber2.place(x=70,y=70)
+
+def setup1clicked(): 
+    global name
+    global region 
+    global income
+    global savings
+    name = nameentry.get()
+    region = regionentry.get()
+    income = float(incomeentry.get())
+    savings = float(savingsentry.get())
+    findtotalmoney()
+    setupwindow.destroy()
+
+def findtotalmoney(): 
+    global totalmoney
+    global totalmoneyint
+    totalmoney = (savings)
+    totalmoneyint = savings
+    totalmoneyint = float(totalmoneyint)
+
+def setup2clicked(): 
+    global rent 
+    global energyuse
+    global energycost
+    global wateruse 
+    global watercost
+    global food
+    global newrent 
+    global newenergycost
+    global newwatercost
+    global newfood
+    rent = rententry.get()
+    energyuse = energyuseentry.get()
+    energycost = float(energycostentry.get()) * float(energyuse)
+    wateruse = wateruseentry.get()
+    watercost = float(watercostentry.get()) * float(wateruse)
+    food = float(eatingoutentry.get()) + float(groceryentry.get())
+    newrent = rententry.get()
+    newenergycost = float(energycostentry.get()) * float(energyuse)
+    newwatercost = float(watercostentry.get()) * float(wateruse)
+    newfood = float(eatingoutentry.get()) + float(groceryentry.get())
+    setupwindow2.destroy()
+
+def spentmoney():
+    global formoney
+    global amount
+    global rent 
+    global energycost
+    global watercost
+    global eatingout 
+    global grocery
+    global totalmoneyint
+    global newrent 
+    global newenergycost
+    global newwatercost
+    global neweatingout 
+    global newgrocery
+    formoney = forentry.get()
+    amount = float(amountentry.get())
+    if formoney == "rent": 
+        newrent = float(rent) - amount
+    elif formoney == "energy cost": 
+        newenergycost = float(energycost) - amount
+    elif formoney == "water use": 
+        newwatercost = float(watercost) - amount
+    elif formoney == "eating out": 
+        neweatingout = float(eatingout) - amount
+    elif formoney == "grocery": 
+        newgrocery = float(grocery) - amount
+    totalmoneyint = totalmoneyint - amount 
+    updatetotalmoney()
+        
+def paid(): 
+    global totalmoneyint
+    global totalmoney
+    totalmoneyint = income + totalmoneyint
+    updatetotalmoney()
+
+def gotmoney(): 
+    def addgotmoney(): 
+        global addedgotmoney
+        global totalmoneyint
+        global totalmoney
+        addedgotmoney = float(amountentry2.get())
+        totalmoneyint = totalmoneyint + addedgotmoney
+        totalmoney = (totalmoneyint)
+        updatetotalmoney()
+        gotmoneywindow.destroy()
+    gotmoneywindow = Tk()
+    gotmoneywindow.title("got money")
+    gotmoneywindow.minsize(width=200,height=150)
+    gotmoneywindow.configure(bg='white')
+    gotmoneyframe = Frame(gotmoneywindow, width=200,height=53,bg=bluecolor)
+    gotmoneyframe.place(x=0,y=0)
+    gotmoneytext2 = Label(gotmoneyframe, text="Got Money", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",20,'bold'))
+    gotmoneytext2.place(x=21,y=9)
+    gotmoneyframe2 = Frame(gotmoneywindow, width=200,height=140,bg=bluecolor)
+    gotmoneyframe2.place(x=0,y=62)
+    amounttext = Label(gotmoneyframe2,text= "Amount:", fg='white',bg=bluecolor,font=("Microsoft YaHei Light",20))
+    amounttext.place(x=21,y=12)
+    amountentry2 = Entry(gotmoneyframe2,fg='black',bg='white',font=("Microsoft YaHei Light",20),width="5")
+    amountentry2.place(x=21,y=54)
+    amountentry2button = Button(gotmoneyframe2,text="Enter",fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",13),width="7", command=addgotmoney)
+    amountentry2button.place(x=110,y=54)
+    gotmoneywindow.mainloop()
+
+
+
+
+
+
+# setup page 1 ------------------------ 
+setupwindow = Tk()
+setupwindow.title("set-up page")
+setupwindow.minsize(width=453,height=340)
+setupwindow.configure(bg='white')
+
+welcomeframe = Frame(setupwindow, width=453, height=81,bg=bluecolor)
+welcomeframe.place(x=0,y=0)
+welcomeheading = Label(welcomeframe, text="Set-Up", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",30,'bold'))
+welcomeheading.place(x=21,y=12)
+enterbutton = Button(text="Enter",fg='white',bg= pinkcolor, font=("Microsoft YaHei Light",20,'bold'),command=setup1clicked)
+enterbutton.place(x=330,y=12)
+
+nameframe = Frame(setupwindow, width=453, height=107,bg=bluecolor)
+nameframe.place(x=0,y=98)
+nameheading = Label(nameframe, text="Name:", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",20,'bold'))
+nameheading.place(x=21,y=15)
+regionheading = Label(nameframe, text="Region:", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",20,'bold'))
+regionheading.place(x=21,y=50)
+nameentry = Entry(nameframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=15)
+nameentry.place(x=120,y=15)
+regionentry = Entry(nameframe, fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=15)
+regionentry.place(x=130,y=55)
+
+incomeframe = Frame(setupwindow, width=453, height=152,bg=bluecolor)
+incomeframe.place(x=0,y=222)
+incomeheading = Label(incomeframe, text="Income:", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",20,'bold'))
+incomeheading.place(x=21,y=15) 
+incomeentry = Entry(incomeframe, fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=10)
+incomeentry.place(x=21,y=55)
+savingsheading = Label(incomeframe, text="Savings:", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",20,'bold'))
+savingsheading.place(x=225,y=15) 
+savingsentry = Entry(incomeframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=10)
+savingsentry.place(x=225,y=55)
+
+# mainloop for setup 1  ---------------- 
+setupwindow.mainloop() 
+
+# setup window 2 ------------------
+setupwindow2 = Tk()
+setupwindow2.title("set-up page 2")
+setupwindow2.minsize(width=500,height=554)
+setupwindow2.configure(bg='white')
+
+welcomeframe2 = Frame(setupwindow2, width=500, height=81,bg=bluecolor)
+welcomeframe2.place(x=0,y=0)
+welcomeheading2 = Label(welcomeframe2, text="Set-Up", fg='white',bg= bluecolor, font=("Microsoft YaHei Light",30,'bold'))
+welcomeheading2.place(x=21,y=12)
+enterbutton2 = Button(text="Enter",fg='white',bg= pinkcolor, font=("Microsoft YaHei Light",20,'bold'),command=setup2clicked)
+enterbutton2.place(x=330,y=12)
+
+utilitiesframe = Frame(setupwindow2, width=500, height=288,bg=bluecolor)
+utilitiesframe.place(x=0,y=96)
+utilitiesheading= Label(utilitiesframe, text="Utilities:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",23,'bold'))
+utilitiesheading.place(x=21,y=12)
+renttext= Label(utilitiesframe, text= "Rent:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+renttext.place(x=21,y=50)
+rententry = Entry(utilitiesframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=14)
+rententry.place(x=95,y=54)
+energyusetext= Label(utilitiesframe, text= "Energy Use/Month:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+energyusetext.place(x=21,y=90)
+energyuseentry = Entry(utilitiesframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=14)
+energyuseentry.place(x=265,y=94)
+energycosttext= Label(utilitiesframe, text= "Energy Cost:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+energycosttext.place(x=21,y=130)
+energycostentry = Entry(utilitiesframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=14)
+energycostentry.place(x=180,y=134)
+waterusetext= Label(utilitiesframe, text= "Water Use/Month:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+waterusetext.place(x=21,y=170)
+wateruseentry = Entry(utilitiesframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=14)
+wateruseentry.place(x=250,y=174)
+watercosttext= Label(utilitiesframe, text= "Water Rate/Month:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+watercosttext.place(x=21,y=210)
+watercostentry = Entry(utilitiesframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=14)
+watercostentry.place(x=260,y=214)
+
+foodframe = Frame(setupwindow2, width=500, height=155,bg=bluecolor)
+foodframe.place(x=0,y=404)
+foodheading= Label(foodframe, text="Food:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",23,'bold'))
+foodheading.place(x=21,y=12)
+eatingouttext= Label(foodframe, text= "Avg. Eating Out Cost/Week:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+eatingouttext.place(x=21,y=50)
+eatingoutentry = Entry(foodframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=5)
+eatingoutentry.place(x=330,y=54)
+groceryentry = Entry(foodframe,fg='black',bg='white',font=("Microsoft YaHei Light",18,),width=5)
+groceryentry.place(x=330,y=94)
+grocerytext= Label(foodframe, text= "Avg. Grocery Cost/Week:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",20))
+grocerytext.place(x=21,y=90)
+
+# mainloop for setup window 2 --------------
+setupwindow2.mainloop()
+
+# data window ----------------------------
+datawindow = Tk()
+datawindow.title("Main Page")
+datawindow.minsize(width=500,height=570)
+datawindow.configure(bg='white')
+
+welcomeframe3 = Frame(datawindow,width=500,height=90,bg=bluecolor)
+welcomeframe3.place(x=0,y=0)
+nametext = ("Welcome,",name,"!")
+welcometext= Label(welcomeframe3,text=nametext,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",30,'bold'))
+welcometext.place(x=21,y=15)
+
+moneyframe = Frame(datawindow,width=500,height=180,bg=bluecolor)
+moneyframe.place(x=0,y=105)
+totalmoneytext = Label(moneyframe,text="Total Money:",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",30,'bold'))
+totalmoneytext.place(x=21,y=20)
+moneynumber1 = Label(moneyframe,text="$",fg='white',bg=bluecolor, font=("Microsoft YaHei Light",50,'bold'))
+moneynumber1.place(x=21,y=70)
+moneynumber2 = Label(moneyframe,text=totalmoney,fg='white',bg=bluecolor, font=("Microsoft YaHei Light",50,'bold'))
+moneynumber2.place(x=70,y=70)
+
+
+spentmoneyframe = Frame(datawindow,width=279,height=184,bg=bluecolor)
+spentmoneyframe.place(x=0,y=300)
+spentmoneyheading = Label(spentmoneyframe, text= "Spent Money:", fg='white',bg=bluecolor,font=("Microsoft YaHei Light",25,'bold'))
+spentmoneyheading.place(x=21,y=12)
+forheading = Label(spentmoneyframe, text= "For:", fg='white',bg=bluecolor,font=("Microsoft YaHei Light",25,'bold'))
+forheading.place(x=21,y=61)
+forentry = Entry(spentmoneyframe,fg='black',bg='white',font=("Microsoft YaHei Light",20,'bold'),width=10)
+forentry.place(x=90,y=70)
+amountheading = Label(spentmoneyframe, text= "Amount:", fg='white',bg=bluecolor,font=("Microsoft YaHei Light",25,'bold'))
+amountheading.place(x=21,y=112)
+amountentry = Entry(spentmoneyframe,fg='black',bg='white',font=("Microsoft YaHei Light",20,'bold'),width=6)
+amountentry.place(x=160,y=120)
+#buttonforthis = Button(spentmoneyframe, text="Enter", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",10,'bold'))
+#buttonforthis.place(x=21,y=160)
+
+seespecificsframe= Frame(datawindow,width=279,height=75,bg=bluecolor)
+seespecificsframe.place(x=0,y=495)
+entryspentmoneybutton = Button(seespecificsframe, text="Spent Money",fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",12,'bold'), command=spentmoney)
+entryspentmoneybutton.place(x=12,y=20)
+seespecificsbutton = Button(seespecificsframe, text= "See Specifics", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",12,'bold'), command=seespecifics)
+seespecificsbutton.place(x=140,y=20)
+
+
+buttonsframe= Frame(datawindow,width=212,height=270,bg=bluecolor)
+buttonsframe.place(x=288,y=300)
+gotmoneybutton = Button(buttonsframe,text="Got Money", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",15,'bold'),command=gotmoney)
+gotmoneybutton.place(x=23,y=19)
+paidbutton = Button(buttonsframe,text="Paid", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",15,'bold'),command=paid)
+paidbutton.place(x=23,y=80)
+updatedatabutton = Button(buttonsframe,text="Update Data", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",15,'bold'))
+updatedatabutton.place(x=23,y=140)
+tipsbutton = Button(buttonsframe,text="Tips", fg='white',bg=pinkcolor,font=("Microsoft YaHei Light",15,'bold'), command=tipsclicked)
+tipsbutton.place(x=23,y=200)
+
+# data window mainloop 
+datawindow.mainloop()
